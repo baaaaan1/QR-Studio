@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Header } from '../components/layout/Header';
+import { QRStudio } from '../components/qr/QRStudio';
+---
+
+<Layout
+  title="QR Studio — Soft Neon Astro QR Suite"
+  description="Generate, style, frame, logo-brand and decode QR codes with client-side privacy, vector SVG, PDF, and high-res PNG export."
+>
+  <Header client:load />
+
+  <main class="flex-1 pb-16">
+    <QRStudio client:load />
+  </main>
+
+  <!-- Clean Neumorphic Footer -->
+  <footer class="border-t border-border bg-surface/50 py-8 backdrop-blur-sm">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-muted">
+      <div class="flex items-center gap-2">
+        <span class="font-heading font-semibold text-text-main">QR Studio</span>
+        <span>—</span>
+        <span>QR Code Generator & Decoder Suite</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="inline-flex items-center gap-1">
+          <span class="h-1.5 w-1.5 rounded-full bg-green-accent"></span>
+          100% Client-Side & Private
+        </span>
+      </div>
+    </div>
+  </footer>
+</Layout>
