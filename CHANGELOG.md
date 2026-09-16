@@ -5,6 +5,14 @@ All notable changes to QR Studio are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-09-16
+
+Patch release that fixes the blocker preventing the shipped container path from starting.
+
+### Fixed
+
+- **Invalid `nginx.conf` directive** — `nginx.conf:1` read `fsfsserver {` (stray `fsfs` prefix) instead of `server {`, so nginx aborted on startup with `[emerg] unknown directive "fsfsserver"` and the `Dockerfile` runtime container never served traffic. This was v1.0.0 Known Issue 1.
+
 ## [1.0.0] - 2026-09-16
 
 QR Studio is a 100% client-side QR code studio built with Astro 7 and React 19 islands. It covers the full workflow — generating QR codes for ten content types, styling them with dots, corners, gradients, logo branding, and CTA frames, then decoding existing codes and exporting to PNG, SVG, or PDF.
@@ -61,9 +69,9 @@ Breaking changes are stated relative to the pre-Tailwind-v4 codebase.
 
 ### Known Issues
 
-Items 1 and 2 block the shipped container path, and item 3 must be resolved before public deployment.
+Item 1 blocked the shipped container path and is fixed in [1.0.1]; item 2 blocks full container 404 handling, and item 3 must be resolved before public deployment.
 
-1. **`nginx.conf:1` is `fsfsserver {`** — an invalid directive (stray `fsfs` prefix). nginx fails to parse the config, so the runtime container from `Dockerfile` will not start. Verified present in the committed `HEAD` revision.
+1. **`nginx.conf:1` is `fsfsserver {`** — an invalid directive (stray `fsfs` prefix). nginx fails to parse the config, so the runtime container from `Dockerfile` will not start. Verified present in the committed `HEAD` revision. **Fixed in [1.0.1].**
 2. **`nginx.conf` declares `error_page 404 /404.html`, but no `404.html` is emitted** — there is no `src/pages/404.astro` and `dist/` contains no `404.html`. Expect nginx config-validation failure or broken 404 handling.
 3. **Placeholder production domain**: `astro.config.mjs` uses `site: 'https://example.com'` (with an inline Indonesian TODO) and `public/robots.txt` points its sitemap at the same placeholder. Sitemap and canonical URLs are wrong until replaced.
 4. **SVG export excludes the composite CTA frame** — frames are canvas-raster only (PNG/PDF).
@@ -74,3 +82,4 @@ Items 1 and 2 block the shipped container path, and item 3 must be resolved befo
 9. `public/logo.svg` is a legacy brand asset that is currently unreferenced.
 
 [1.0.0]: https://github.com/baaaaan1/QR-Studio/releases/tag/v1.0.0
+[1.0.1]: https://github.com/baaaaan1/QR-Studio/releases/tag/v1.0.1
