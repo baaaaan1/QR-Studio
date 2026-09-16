@@ -2,6 +2,8 @@
 
 Create a QR code that suits your needs, complete with a call-to-action (CTA) frame, a custom logo, and vector export — entirely client-side.
 
+![QR Studio homepage — content type, style, logo, and frame tabs with live QR preview](docs/assets/qr-studio-home.png)
+
 ## Table of Contents
 
 - [Features](#features)
