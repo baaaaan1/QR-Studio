@@ -5,6 +5,20 @@ All notable changes to QR Studio are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2026-09-16
+
+Deployment follow-up release that closes Known Issues 2 and 3 from v1.0.0.
+
+### Added
+
+- **Custom 404 page** (`src/pages/404.astro`) — a branded neumorphic "Page not found" screen with a back-to-studio CTA, built to `dist/404.html` so `nginx.conf`'s `error_page 404 /404.html` resolves to a real page instead of nginx's default (v1.0.0 Known Issue 2).
+- **`head` slot in `src/layouts/Layout.astro`** — lets pages inject extra `<head>` tags; the 404 page uses it for `<meta name="robots" content="noindex">`.
+
+### Changed
+
+- **Production domain wired in** — `site` in `astro.config.mjs` and the `public/robots.txt` sitemap URL now use `https://qr.numaya.my.id` instead of the `https://example.com` placeholder, so sitemap and canonical URLs are correct (v1.0.0 Known Issue 3).
+- **README and Dokploy docs updated** — SEO/sitemap notes, project structure, and the deployment checklist/troubleshooting entries now describe the real domain and the shipped 404 page.
+
 ## [1.0.1] - 2026-09-16
 
 Patch release that fixes the blocker preventing the shipped container path from starting.
@@ -69,11 +83,11 @@ Breaking changes are stated relative to the pre-Tailwind-v4 codebase.
 
 ### Known Issues
 
-Item 1 blocked the shipped container path and is fixed in [1.0.1]; item 2 blocks full container 404 handling, and item 3 must be resolved before public deployment.
+Known Issues 1–3 are all resolved — item 1 in [1.0.1], items 2 and 3 in [1.0.2]. The remaining items are documented limitations, not release blockers.
 
 1. **`nginx.conf:1` is `fsfsserver {`** — an invalid directive (stray `fsfs` prefix). nginx fails to parse the config, so the runtime container from `Dockerfile` will not start. Verified present in the committed `HEAD` revision. **Fixed in [1.0.1].**
-2. **`nginx.conf` declares `error_page 404 /404.html`, but no `404.html` is emitted** — there is no `src/pages/404.astro` and `dist/` contains no `404.html`. Expect nginx config-validation failure or broken 404 handling.
-3. **Placeholder production domain**: `astro.config.mjs` uses `site: 'https://example.com'` (with an inline Indonesian TODO) and `public/robots.txt` points its sitemap at the same placeholder. Sitemap and canonical URLs are wrong until replaced.
+2. **`nginx.conf` declares `error_page 404 /404.html`, but no `404.html` is emitted** — there is no `src/pages/404.astro` and `dist/` contains no `404.html`. Expect nginx config-validation failure or broken 404 handling. **Fixed in [1.0.2]**: `src/pages/404.astro` builds to `dist/404.html`.
+3. **Placeholder production domain**: `astro.config.mjs` uses `site: 'https://example.com'` (with an inline Indonesian TODO) and `public/robots.txt` points its sitemap at the same placeholder. Sitemap and canonical URLs are wrong until replaced. **Fixed in [1.0.2]**: both now use `https://qr.numaya.my.id`.
 4. **SVG export excludes the composite CTA frame** — frames are canvas-raster only (PNG/PDF).
 5. **Decoding needs sharp input**: `jsQR` fails on blurry, low-contrast, or steeply angled images.
 6. **Webcam scanning requires a secure context** (`https://` or `http://localhost`) plus explicit camera permission.
@@ -83,3 +97,4 @@ Item 1 blocked the shipped container path and is fixed in [1.0.1]; item 2 blocks
 
 [1.0.0]: https://github.com/baaaaan1/QR-Studio/releases/tag/v1.0.0
 [1.0.1]: https://github.com/baaaaan1/QR-Studio/releases/tag/v1.0.1
+[1.0.2]: https://github.com/baaaaan1/QR-Studio/releases/tag/v1.0.2
