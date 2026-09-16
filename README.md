@@ -103,6 +103,7 @@ src/
 │   └── pdf-exporter.ts # PDF export
 ├── layouts/Layout.astro   # <head>, fonts, zero-flicker theme + favicon script
 ├── pages/index.astro      # single page: Header + QRStudio + footer
+├── pages/404.astro        # branded 404 page (built to dist/404.html)
 └── styles/global.css      # design tokens (light/dark), @theme mapping, neu-* utilities
 
 public/
@@ -140,9 +141,9 @@ flowchart LR
 
 ## SEO & Sitemap
 
-- `astro.config.mjs` sets `site` to a **placeholder** `https://example.com` — replace it with the real production domain before deploying.
+- `astro.config.mjs` sets `site` to the production domain `https://qr.numaya.my.id` — change it if the app is deployed elsewhere.
 - `@astrojs/sitemap` runs on every build and emits `dist/sitemap-index.xml` + `dist/sitemap-0.xml`.
-- `public/robots.txt` allows crawling and points to `https://example.com/sitemap-index.xml` — update the domain there too.
+- `public/robots.txt` allows crawling and points to `https://qr.numaya.my.id/sitemap-index.xml`.
 
 ```bash
 npm run build
@@ -185,7 +186,8 @@ The repo ships a production container path: the root [`Dockerfile`](./Dockerfile
 
 - Full guide: [Dokploy build types (English)](./docs/dokploy/README.md) · [Bahasa Indonesia](./docs/dokploy/README-ID.md)
 - Recommended build type: **Dockerfile**; alternative configs live in [`docs/dokploy/examples/`](./docs/dokploy/examples).
-- Before going live, replace the placeholder `site` in `astro.config.mjs` and the sitemap URL in `public/robots.txt` with the real domain.
+- Production domain is already wired to `https://qr.numaya.my.id` in `astro.config.mjs` and `public/robots.txt`; update both if you deploy under a different domain.
+- `src/pages/404.astro` builds to `dist/404.html`, which is what `nginx.conf` serves for `error_page 404`.
 
 ## Changelog
 

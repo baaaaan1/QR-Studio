@@ -62,7 +62,7 @@ Use this table when filling in Dokploy fields. All values come from this reposit
 3. A domain (or subdomain) pointing to the Dokploy server, ideally with automatic HTTPS enabled.
 4. Enough server resources for a server-side build: ~4 GB RAM and 2 CPU cores.
 5. HTTPS in production: the webcam decoder needs a secure context (`https://`), otherwise the camera cannot be opened.
-6. Before going live, replace the placeholders — `site` in `astro.config.mjs` and the `robots.txt` sitemap URL still point to `https://example.com` (not changed by this documentation task).
+6. The production domain is already wired to `https://qr.numaya.my.id` — `site` in `astro.config.mjs` and the `robots.txt` sitemap URL. Update both if you deploy under a different domain.
 7. Node.js ≥ 22.12 everywhere a build runs. The `engines.node` field is read by Nixpacks, Railpack, Heroku, and Paketo; if a builder still picks an older Node, set its version env (see [Troubleshooting](#appendix-c--troubleshooting)).
 
 ## Shared Dokploy Setup
@@ -468,12 +468,12 @@ Set the target port in **Domains → Add Domain → Container Port**. A mismatch
 | ------- | ------------- |
 | Build fails with a Node engine error (`Unsupported engine`, `>=22.12.0`) | The builder picked an older Node. Nixpacks: `NIXPACKS_NODE_VERSION=22`; Railpack: `RAILPACK_NODE_VERSION=22`; Heroku: `engines.node` (classic buildpack: `NODE_VERSION`); Paketo: `BP_NODE_VERSION=22`. |
 | Nixpacks log shows `❌ Copying dist to ... failed` | `Publish Directory` is wrong. Use the relative path `dist` — no leading `/`, no trailing `/`, and make sure `npm run build` actually creates it. |
-| Unknown URLs return nginx's plain 404 page | Expected for a single-page Astro site with the SPA toggle off. Enable `Single Page Application (SPA)` (Nixpacks/Static) if you want `index.html` fallback, or add a `src/pages/404.astro`. |
+| Unknown URLs return nginx's plain 404 page | Mostly expected for a single-page Astro site with the SPA toggle off. The repo ships `src/pages/404.astro` (built to `dist/404.html`) and `nginx.conf` serves it via `error_page 404`; enable `Single Page Application (SPA)` (Nixpacks/Static) instead if you prefer `index.html` fallback. |
 | Unknown URLs return the app with status 200 | Railpack's Caddy serves `index_fallback: true` by default. Add a `Staticfile` with `index_fallback: false` if you want real 404s. |
 | Railpack suddenly runs a preview/start server instead of serving static files | A `start` script was added back to `package.json` (or `deploy.startCommand` exists). Remove `start`; keep `preview:host`. |
 | Buildpack deployment serves the Astro preview server | That is how the Heroku/Paketo paths work here. They are demo-grade; use Dockerfile, Railpack, or Nixpacks + `dist` for production. |
 | Camera/webcam decoder does not work on the deployed site | The camera needs a secure context. Serve the app over HTTPS (enable HTTPS on the Dokploy domain) or via `localhost`. |
-| `robots.txt` and sitemap point to `example.com` | `astro.config.mjs` `site` and `public/robots.txt` still contain the placeholder. Replace both with the production domain before go-live. |
+| `robots.txt` and sitemap point to `example.com` | `astro.config.mjs` `site` and/or `public/robots.txt` still contain the old placeholder; both are set to `https://qr.numaya.my.id` in the repo. Update them if your deployment domain differs. |
 | Domain returns `502 Bad Gateway` | Domain container port does not match the app port (80 for nginx/Caddy, 4321 for buildpacks), or the container is not running. |
 | Static build serves nothing / 404 for `/` | The selected Build Path does not contain `index.html`. Use `dist` when committing the output, or `/` for a dedicated deploy branch. |
 | Nixpacks/Railpack/Static container changed ports unexpectedly | A `PORT` env var is set. Remove it unless you are using a buildpack; Caddy and Dokploy's generated nginx images honor it. |

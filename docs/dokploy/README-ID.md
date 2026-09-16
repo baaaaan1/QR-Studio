@@ -62,7 +62,7 @@ Gunakan tabel ini saat mengisi field Dokploy. Semua nilai berasal dari repositor
 3. Domain (atau subdomain) yang mengarah ke server Dokploy, idealnya dengan HTTPS otomatis aktif.
 4. Resource server yang cukup untuk build di server: sekitar 4 GB RAM dan 2 core CPU.
 5. HTTPS di produksi: decoder kamera membutuhkan secure context (`https://`), jika tidak kamera tidak bisa dibuka.
-6. Sebelum go-live, ganti placeholder — `site` di `astro.config.mjs` dan URL sitemap di `robots.txt` masih mengarah ke `https://example.com` (tidak diubah oleh task dokumentasi ini).
+6. Domain produksi sudah diarahkan ke `https://qr.numaya.my.id` — `site` di `astro.config.mjs` dan URL sitemap di `robots.txt`. Perbarui keduanya bila Anda deploy dengan domain berbeda.
 7. Node.js ≥ 22.12 di setiap tempat build dijalankan. Field `engines.node` dibaca Nixpacks, Railpack, Heroku, dan Paketo; bila builder tetap memilih Node lama, set env versinya (lihat [Troubleshooting](#lampiran-c--troubleshooting)).
 
 ## Setup Dokploy Umum
@@ -468,12 +468,12 @@ Set target port di **Domains → Add Domain → Container Port**. Ketidakcocokan
 | ------ | ------------------- |
 | Build gagal dengan error engine Node (`Unsupported engine`, `>=22.12.0`) | Builder memilih Node lama. Nixpacks: `NIXPACKS_NODE_VERSION=22`; Railpack: `RAILPACK_NODE_VERSION=22`; Heroku: `engines.node` (buildpack klasik: `NODE_VERSION`); Paketo: `BP_NODE_VERSION=22`. |
 | Log Nixpacks menampilkan `❌ Copying dist to ... failed` | `Publish Directory` salah. Gunakan path relatif `dist` — tanpa `/` di awal, tanpa `/` di akhir, dan pastikan `npm run build` benar-benar membuatnya. |
-| URL tak dikenal mengembalikan halaman 404 polos nginx | Wajar untuk situs Astro satu halaman dengan toggle SPA mati. Nyalakan `Single Page Application (SPA)` (Nixpacks/Static) bila ingin fallback `index.html`, atau tambahkan `src/pages/404.astro`. |
+| URL tak dikenal mengembalikan halaman 404 polos nginx | Umumnya wajar untuk situs Astro satu halaman dengan toggle SPA mati. Repo ini menyertakan `src/pages/404.astro` (di-build menjadi `dist/404.html`) dan `nginx.conf` menyajikannya lewat `error_page 404`; nyalakan `Single Page Application (SPA)` (Nixpacks/Static) bila lebih suka fallback `index.html`. |
 | URL tak dikenal mengembalikan aplikasi dengan status 200 | Caddy milik Railpack memakai `index_fallback: true` secara default. Tambahkan `Staticfile` dengan `index_fallback: false` bila ingin 404 sebenarnya. |
 | Railpack tiba-tiba menjalankan preview/start server alih-alih menyajikan file statis | Script `start` ditambahkan kembali ke `package.json` (atau ada `deploy.startCommand`). Hapus `start`; pertahankan `preview:host`. |
 | Deployment buildpack menyajikan preview server Astro | Memang begitulah jalur Heroku/Paketo di sini. Keduanya kualitas demo; gunakan Dockerfile, Railpack, atau Nixpacks + `dist` untuk produksi. |
 | Decoder kamera/webcam tidak berfungsi di situs yang di-deploy | Kamera butuh secure context. Sajikan aplikasi lewat HTTPS (aktifkan HTTPS di domain Dokploy) atau via `localhost`. |
-| `robots.txt` dan sitemap masih mengarah ke `example.com` | `site` di `astro.config.mjs` dan `public/robots.txt` masih berisi placeholder. Ganti keduanya dengan domain produksi sebelum go-live. |
+| `robots.txt` dan sitemap masih mengarah ke `example.com` | `site` di `astro.config.mjs` dan/atau `public/robots.txt` masih berisi placeholder lama; di repo keduanya sudah di-set ke `https://qr.numaya.my.id`. Perbarui bila domain deployment Anda berbeda. |
 | Domain mengembalikan `502 Bad Gateway` | Container port domain tidak cocok dengan port aplikasi (80 untuk nginx/Caddy, 4321 untuk buildpack), atau container tidak berjalan. |
 | Build Static tidak menyajikan apa pun / 404 untuk `/` | Build Path yang dipilih tidak berisi `index.html`. Gunakan `dist` bila meng-commit output, atau `/` untuk branch deploy khusus. |
 | Container Nixpacks/Railpack/Static tiba-tiba berubah port | Ada env var `PORT` yang di-set. Hapus kecuali Anda memakai buildpack; Caddy dan image nginx generated Dokploy mematuhinya. |
