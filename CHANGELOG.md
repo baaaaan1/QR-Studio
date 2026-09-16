@@ -5,6 +5,14 @@ All notable changes to QR Studio are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2026-09-16
+
+Documentation-only release — no runtime or build changes.
+
+### Added
+
+- **Homepage screenshot in the README** — `docs/assets/qr-studio-home.png` shows the actual web UI shipped by this repo (content type, style, logo, and frame tabs with live QR preview). Stored under `docs/assets/` so it is not copied into the deployed `dist/`.
+
 ## [1.0.2] - 2026-09-16
 
 Deployment follow-up release that closes Known Issues 2 and 3 from v1.0.0.
@@ -98,3 +106,4 @@ Known Issues 1–3 are all resolved — item 1 in [1.0.1], items 2 and 3 in [1.0
 [1.0.0]: https://github.com/baaaaan1/QR-Studio/releases/tag/v1.0.0
 [1.0.1]: https://github.com/baaaaan1/QR-Studio/releases/tag/v1.0.1
 [1.0.2]: https://github.com/baaaaan1/QR-Studio/releases/tag/v1.0.2
+[1.0.3]: https://github.com/baaaaan1/QR-Studio/releases/tag/v1.0.3
