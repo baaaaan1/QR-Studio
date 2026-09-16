@@ -81,7 +81,7 @@ export const PresetLogoGrid: React.FC<Props> = ({ onSelect }) => {
 
   return (
     <div className="space-y-2.5">
-      <label className="text-xs font-semibold text-text-main block">Preset Badges &amp; Logos</label>
+      <span className="text-xs font-semibold text-text-main block">Preset Badges &amp; Logos</span>
       <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
         {LOGO_PRESETS.map((item) => {
           const iconUrl = iconUrls[item.id];
@@ -104,7 +104,7 @@ export const PresetLogoGrid: React.FC<Props> = ({ onSelect }) => {
                   className="h-5 w-5 object-contain transition-transform group-hover:scale-110"
                 />
               ) : isFailed ? (
-                <Icon icon="solar:danger-triangle-outline" className="h-5 w-5 text-pink-accent" aria-hidden="true" />
+                <Icon icon="solar:danger-triangle-outline" className="h-5 w-5 text-error" aria-hidden="true" />
               ) : (
                 <Icon icon="solar:refresh-outline" className="h-5 w-5 animate-spin text-primary" aria-hidden="true" />
               )}

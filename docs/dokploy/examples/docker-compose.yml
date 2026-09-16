@@ -1,0 +1,10 @@
+# Copy this file to the repository root to use it.
+# Local test:  docker compose up --build  ->  http://localhost:8080
+# Dokploy "Docker Compose" service: remove the ports block and add a Domain
+# that points to the web service on port 80 (let Dokploy/Traefik route traffic).
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    restart: unless-stopped

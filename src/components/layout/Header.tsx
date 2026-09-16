@@ -19,6 +19,7 @@ export const Header: React.FC = () => {
       document.documentElement.classList.remove('dark');
       localStorage.setItem('qr_studio_theme', 'light');
     }
+    document.getElementById('app-favicon')?.setAttribute('href', nextDark ? '/favicon.svg' : '/favicon-light.svg');
   };
 
   return (
@@ -26,11 +27,12 @@ export const Header: React.FC = () => {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Brand Logo */}
         <a href="/" className="flex items-center gap-3 group">
-          <div className="flex h-10 w-10 items-center justify-center rounded-control bg-surface shadow-neu-sm border border-border group-hover:shadow-neu-hover transition-all">
-            <Icon
-              icon="solar:qr-code-bold-duotone"
-              className="h-6 w-6 text-primary transition-transform group-hover:scale-110"
-              aria-hidden="true"
+          <div className="neu-button flex h-10 w-10 items-center justify-center rounded-control">
+            <img
+              src={isDark ? '/favicon.svg' : '/favicon-light.svg'}
+              alt="QR Studio logo"
+              className="h-7 w-7 transition-transform group-hover:scale-110"
+              draggable={false}
             />
           </div>
           <div className="flex flex-col">
@@ -57,7 +59,7 @@ export const Header: React.FC = () => {
             <Icon
               icon={isDark ? 'solar:sun-2-outline' : 'solar:moon-outline'}
               className={`h-5 w-5 transition-transform duration-300 ${
-                isDark ? 'text-cyan-accent rotate-90' : 'text-primary rotate-0'
+                isDark ? 'text-yellow-accent rotate-90' : 'text-primary rotate-0'
               }`}
             />
           </button>

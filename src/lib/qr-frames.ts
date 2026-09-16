@@ -137,11 +137,11 @@ export async function compositeQRWithFrame(
     ctx.stroke();
 
     if (hasTop) {
-      drawTopText(ctx, topText, canvasW, topH, config.frameTextColor || '#FFFFFF', config.frameColor, Math.round(topH * 0.42));
+      drawTopText(ctx, topText, canvasW, topH, config.frameTextColor || '#172126', config.frameColor, Math.round(topH * 0.42));
     }
     ctx.drawImage(qrCanvas, qrX, qrY);
     if (hasBottom) {
-      drawBottomPill(ctx, bottomText, canvasW, qrY + qrSize, bottomH, config.frameColor, config.frameTextColor || '#FFFFFF');
+      drawBottomPill(ctx, bottomText, canvasW, qrY + qrSize, bottomH, config.frameColor, config.frameTextColor || '#172126');
     }
   } else if (frameType === 'top-banner') {
     const topH = hasTop ? bannerSize : 0;
@@ -156,7 +156,7 @@ export async function compositeQRWithFrame(
     ctx.fill();
 
     if (hasTop) {
-      drawTopText(ctx, topText, canvasW, topH, config.frameTextColor || '#FFFFFF', config.frameColor, Math.round(topH * 0.42));
+      drawTopText(ctx, topText, canvasW, topH, config.frameTextColor || '#172126', config.frameColor, Math.round(topH * 0.42));
     }
     ctx.drawImage(qrCanvas, qrX, qrY);
     if (hasBottom) {
@@ -173,16 +173,16 @@ export async function compositeQRWithFrame(
     ctx.fillStyle = '#FFFFFF';
     drawRoundedRect(ctx, 0, 0, canvasW, canvasH, 18);
     ctx.fill();
-    ctx.strokeStyle = '#CBD5E1';
+    ctx.strokeStyle = '#DCE5E7';
     ctx.lineWidth = 2;
     ctx.stroke();
 
     if (hasTop) {
-      drawTopText(ctx, topText, canvasW, topH, config.frameTextColor || '#FFFFFF', config.frameColor || '#172033', Math.round(topH * 0.38));
+      drawTopText(ctx, topText, canvasW, topH, config.frameTextColor || '#172126', config.frameColor || '#172126', Math.round(topH * 0.38));
     }
     ctx.drawImage(qrCanvas, qrX, qrY);
     if (hasBottom) {
-      drawBottomCaption(ctx, bottomText, canvasW, qrY + qrSize + bottomMargin / 2, config.frameColor || '#172033', Math.round(bottomMargin * 0.3));
+      drawBottomCaption(ctx, bottomText, canvasW, qrY + qrSize + bottomMargin / 2, config.frameColor || '#172126', Math.round(bottomMargin * 0.3));
     }
   } else if (frameType === 'phone') {
     const topNotch = Math.round(qrSize * 0.14);
@@ -193,15 +193,15 @@ export async function compositeQRWithFrame(
     targetCanvas.width = canvasW;
     targetCanvas.height = canvasH;
 
-    ctx.fillStyle = '#101522';
+    ctx.fillStyle = '#192126';
     drawRoundedRect(ctx, 0, topH, canvasW, canvasH - topH, 36);
     ctx.fill();
 
-    ctx.fillStyle = config.frameBgColor || '#EFF3F9';
+    ctx.fillStyle = config.frameBgColor || '#FFFFFF';
     drawRoundedRect(ctx, 8, topH + 8, canvasW - 16, canvasH - topH - 16, 28);
     ctx.fill();
 
-    ctx.fillStyle = '#101522';
+    ctx.fillStyle = '#192126';
     drawRoundedRect(ctx, canvasW / 2 - 40, topH + 14, 80, 16, 8);
     ctx.fill();
 
@@ -209,7 +209,7 @@ export async function compositeQRWithFrame(
       ctx.fillStyle = config.frameBgColor || '#FFFFFF';
       drawRoundedRect(ctx, 0, 0, canvasW, topH + 24, 24);
       ctx.fill();
-      drawTopText(ctx, topText, canvasW, topH, config.frameTextColor || '#FFFFFF', config.frameColor, Math.round(topH * 0.38));
+      drawTopText(ctx, topText, canvasW, topH, config.frameTextColor || '#172126', config.frameColor, Math.round(topH * 0.38));
     }
     ctx.drawImage(qrCanvas, qrX, qrY);
     if (hasBottom) {
@@ -223,7 +223,7 @@ export async function compositeQRWithFrame(
     targetCanvas.width = canvasW;
     targetCanvas.height = canvasH;
 
-    ctx.fillStyle = '#101522';
+    ctx.fillStyle = '#192126';
     drawRoundedRect(ctx, 0, 0, canvasW, canvasH, 24);
     ctx.fill();
     ctx.strokeStyle = config.frameColor;
@@ -258,7 +258,7 @@ export async function compositeQRWithFrame(
     ctx.fill();
 
     if (hasTop) {
-      drawTopText(ctx, topText, canvasW, topH, config.frameTextColor || '#FFFFFF', config.frameColor, Math.round(topH * 0.38));
+      drawTopText(ctx, topText, canvasW, topH, config.frameTextColor || '#172126', config.frameColor, Math.round(topH * 0.38));
     }
     ctx.drawImage(qrCanvas, qrX, qrY);
     if (hasBottom) {
@@ -267,7 +267,7 @@ export async function compositeQRWithFrame(
       ctx.setLineDash([8, 6]);
       ctx.moveTo(15, dividerY);
       ctx.lineTo(canvasW - 15, dividerY);
-      ctx.strokeStyle = '#CBD5E1';
+      ctx.strokeStyle = '#DCE5E7';
       ctx.lineWidth = 2;
       ctx.stroke();
       ctx.setLineDash([]);

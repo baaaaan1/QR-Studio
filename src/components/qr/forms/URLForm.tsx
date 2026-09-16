@@ -10,11 +10,12 @@ interface FormProps {
 export const URLForm: React.FC<FormProps> = ({ config, onChange }) => {
   return (
     <div className="space-y-3">
-      <label className="block text-xs font-semibold text-text-main">
+      <label htmlFor="url-target-input" className="block text-xs font-semibold text-text-main">
         Target Website URL
       </label>
       <div className="relative">
         <input
+          id="url-target-input"
           type="url"
           value={config.urlData.url}
           onChange={(e) =>

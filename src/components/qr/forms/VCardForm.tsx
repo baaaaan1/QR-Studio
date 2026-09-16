@@ -19,8 +19,9 @@ export const VCardForm: React.FC<FormProps> = ({ config, onChange }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
       <div>
-        <label className="text-xs font-medium text-text-muted">First Name</label>
+        <label htmlFor="vcard-first-name" className="text-xs font-medium text-text-muted">First Name</label>
         <input
+          id="vcard-first-name"
           type="text"
           value={config.vcardData.firstName}
           onChange={(e) => update('firstName', e.target.value)}
@@ -30,8 +31,9 @@ export const VCardForm: React.FC<FormProps> = ({ config, onChange }) => {
       </div>
 
       <div>
-        <label className="text-xs font-medium text-text-muted">Last Name</label>
+        <label htmlFor="vcard-last-name" className="text-xs font-medium text-text-muted">Last Name</label>
         <input
+          id="vcard-last-name"
           type="text"
           value={config.vcardData.lastName}
           onChange={(e) => update('lastName', e.target.value)}
@@ -41,8 +43,9 @@ export const VCardForm: React.FC<FormProps> = ({ config, onChange }) => {
       </div>
 
       <div>
-        <label className="text-xs font-medium text-text-muted">Phone</label>
+        <label htmlFor="vcard-phone" className="text-xs font-medium text-text-muted">Phone</label>
         <input
+          id="vcard-phone"
           type="tel"
           value={config.vcardData.phone}
           onChange={(e) => update('phone', e.target.value)}
@@ -52,8 +55,9 @@ export const VCardForm: React.FC<FormProps> = ({ config, onChange }) => {
       </div>
 
       <div>
-        <label className="text-xs font-medium text-text-muted">Email</label>
+        <label htmlFor="vcard-email" className="text-xs font-medium text-text-muted">Email</label>
         <input
+          id="vcard-email"
           type="email"
           value={config.vcardData.email}
           onChange={(e) => update('email', e.target.value)}
@@ -63,8 +67,9 @@ export const VCardForm: React.FC<FormProps> = ({ config, onChange }) => {
       </div>
 
       <div>
-        <label className="text-xs font-medium text-text-muted">Organization</label>
+        <label htmlFor="vcard-organization" className="text-xs font-medium text-text-muted">Organization</label>
         <input
+          id="vcard-organization"
           type="text"
           value={config.vcardData.organization}
           onChange={(e) => update('organization', e.target.value)}
@@ -74,8 +79,9 @@ export const VCardForm: React.FC<FormProps> = ({ config, onChange }) => {
       </div>
 
       <div>
-        <label className="text-xs font-medium text-text-muted">Job Title</label>
+        <label htmlFor="vcard-title" className="text-xs font-medium text-text-muted">Job Title</label>
         <input
+          id="vcard-title"
           type="text"
           value={config.vcardData.title}
           onChange={(e) => update('title', e.target.value)}
@@ -85,8 +91,9 @@ export const VCardForm: React.FC<FormProps> = ({ config, onChange }) => {
       </div>
 
       <div className="sm:col-span-2">
-        <label className="text-xs font-medium text-text-muted">Website</label>
+        <label htmlFor="vcard-url" className="text-xs font-medium text-text-muted">Website</label>
         <input
+          id="vcard-url"
           type="url"
           value={config.vcardData.url}
           onChange={(e) => update('url', e.target.value)}
@@ -96,8 +103,9 @@ export const VCardForm: React.FC<FormProps> = ({ config, onChange }) => {
       </div>
 
       <div className="sm:col-span-2">
-        <label className="text-xs font-medium text-text-muted">Address / City</label>
+        <label htmlFor="vcard-address" className="text-xs font-medium text-text-muted">Address / City</label>
         <input
+          id="vcard-address"
           type="text"
           value={config.vcardData.address}
           onChange={(e) => update('address', e.target.value)}

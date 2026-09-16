@@ -9,10 +9,11 @@ interface FormProps {
 export const WhatsAppForm: React.FC<FormProps> = ({ config, onChange }) => (
   <div className="space-y-3">
     <div>
-      <label className="text-xs font-semibold text-text-main">
+      <label htmlFor="wa-phone" className="text-xs font-semibold text-text-main">
         WhatsApp Number (with country code, no + or symbols)
       </label>
       <input
+        id="wa-phone"
         type="tel"
         value={config.whatsappData.phone}
         onChange={(e) => onChange({ whatsappData: { ...config.whatsappData, phone: e.target.value } })}
@@ -21,8 +22,9 @@ export const WhatsAppForm: React.FC<FormProps> = ({ config, onChange }) => (
       />
     </div>
     <div>
-      <label className="text-xs font-semibold text-text-main">Prefilled Message</label>
+      <label htmlFor="wa-message" className="text-xs font-semibold text-text-main">Prefilled Message</label>
       <textarea
+        id="wa-message"
         rows={3}
         value={config.whatsappData.message}
         onChange={(e) => onChange({ whatsappData: { ...config.whatsappData, message: e.target.value } })}
@@ -37,8 +39,9 @@ export const CryptoForm: React.FC<FormProps> = ({ config, onChange }) => (
   <div className="space-y-3">
     <div className="grid grid-cols-2 gap-3">
       <div>
-        <label className="text-xs font-semibold text-text-main">Cryptocurrency</label>
+        <label htmlFor="crypto-coin" className="text-xs font-semibold text-text-main">Cryptocurrency</label>
         <select
+          id="crypto-coin"
           value={config.cryptoData.coin}
           onChange={(e) =>
             onChange({
@@ -57,8 +60,9 @@ export const CryptoForm: React.FC<FormProps> = ({ config, onChange }) => (
         </select>
       </div>
       <div>
-        <label className="text-xs font-semibold text-text-main">Amount (Optional)</label>
+        <label htmlFor="crypto-amount" className="text-xs font-semibold text-text-main">Amount (Optional)</label>
         <input
+          id="crypto-amount"
           type="text"
           value={config.cryptoData.amount}
           onChange={(e) => onChange({ cryptoData: { ...config.cryptoData, amount: e.target.value } })}
@@ -68,8 +72,9 @@ export const CryptoForm: React.FC<FormProps> = ({ config, onChange }) => (
       </div>
     </div>
     <div>
-      <label className="text-xs font-semibold text-text-main">Wallet Address</label>
+      <label htmlFor="crypto-address" className="text-xs font-semibold text-text-main">Wallet Address</label>
       <input
+        id="crypto-address"
         type="text"
         value={config.cryptoData.address}
         onChange={(e) => onChange({ cryptoData: { ...config.cryptoData, address: e.target.value } })}
@@ -83,8 +88,9 @@ export const CryptoForm: React.FC<FormProps> = ({ config, onChange }) => (
 export const EventForm: React.FC<FormProps> = ({ config, onChange }) => (
   <div className="space-y-3">
     <div>
-      <label className="text-xs font-semibold text-text-main">Event Title</label>
+      <label htmlFor="event-title" className="text-xs font-semibold text-text-main">Event Title</label>
       <input
+        id="event-title"
         type="text"
         value={config.eventData.title}
         onChange={(e) => onChange({ eventData: { ...config.eventData, title: e.target.value } })}
@@ -94,8 +100,9 @@ export const EventForm: React.FC<FormProps> = ({ config, onChange }) => (
     </div>
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
       <div>
-        <label className="text-xs font-semibold text-text-main">Start Date & Time</label>
+        <label htmlFor="event-start" className="text-xs font-semibold text-text-main">Start Date &amp; Time</label>
         <input
+          id="event-start"
           type="datetime-local"
           value={config.eventData.start}
           onChange={(e) => onChange({ eventData: { ...config.eventData, start: e.target.value } })}
@@ -103,8 +110,9 @@ export const EventForm: React.FC<FormProps> = ({ config, onChange }) => (
         />
       </div>
       <div>
-        <label className="text-xs font-semibold text-text-main">End Date & Time</label>
+        <label htmlFor="event-end" className="text-xs font-semibold text-text-main">End Date &amp; Time</label>
         <input
+          id="event-end"
           type="datetime-local"
           value={config.eventData.end}
           onChange={(e) => onChange({ eventData: { ...config.eventData, end: e.target.value } })}
@@ -113,8 +121,9 @@ export const EventForm: React.FC<FormProps> = ({ config, onChange }) => (
       </div>
     </div>
     <div>
-      <label className="text-xs font-semibold text-text-main">Location</label>
+      <label htmlFor="event-location" className="text-xs font-semibold text-text-main">Location</label>
       <input
+        id="event-location"
         type="text"
         value={config.eventData.location}
         onChange={(e) => onChange({ eventData: { ...config.eventData, location: e.target.value } })}

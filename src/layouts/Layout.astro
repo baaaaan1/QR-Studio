@@ -18,7 +18,7 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" id="app-favicon" type="image/svg+xml" href="/favicon-light.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -34,15 +34,20 @@ const {
       (function () {
         const storedTheme = localStorage.getItem('qr_studio_theme');
         const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (storedTheme === 'dark' || (!storedTheme && systemDark)) {
+        const isDark = storedTheme === 'dark' || (!storedTheme && systemDark);
+        if (isDark) {
           document.documentElement.classList.add('dark');
         } else {
           document.documentElement.classList.remove('dark');
         }
+        const favicon = document.getElementById('app-favicon');
+        if (favicon) {
+          favicon.setAttribute('href', isDark ? '/favicon.svg' : '/favicon-light.svg');
+        }
       })();
     </script>
   </head>
-  <body class="relative min-h-screen bg-background text-text-main antialiased selection:bg-primary selection:text-white">
+  <body class="relative min-h-screen bg-background text-text-main antialiased selection:bg-primary selection:text-on-primary">
     <AmbientGlow />
     <div class="relative z-10 flex min-h-screen flex-col">
       <slot />

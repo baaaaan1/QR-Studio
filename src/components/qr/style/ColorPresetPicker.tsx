@@ -33,10 +33,10 @@ export const ColorPresetPicker: React.FC<Props> = ({ config, onChange }) => {
   return (
     <div className="space-y-2.5">
       <div className="flex items-center justify-between">
-        <label className="text-xs font-semibold text-text-main flex items-center gap-1.5">
+        <span className="text-xs font-semibold text-text-main flex items-center gap-1.5">
           <Icon icon="solar:pallete-2-outline" className="h-4 w-4 text-primary" />
           <span>Curated Color Themes</span>
-        </label>
+        </span>
       </div>
       <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
         {COLOR_PRESETS.map((preset) => (
@@ -47,7 +47,7 @@ export const ColorPresetPicker: React.FC<Props> = ({ config, onChange }) => {
             className="group flex flex-col items-center gap-1.5 p-2 rounded-control neu-button hover:border-primary/50 transition-all text-left"
           >
             <div
-              className="w-full h-7 rounded-md border border-border shadow-inner"
+              className="w-full h-7 rounded-md border border-border inset-shadow-sm"
               style={{
                 background: gradientCss(preset),
               }}

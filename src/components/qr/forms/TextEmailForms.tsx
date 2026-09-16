@@ -8,8 +8,9 @@ interface FormProps {
 
 export const TextForm: React.FC<FormProps> = ({ config, onChange }) => (
   <div className="space-y-3">
-    <label className="block text-xs font-semibold text-text-main">Text Content</label>
+    <label htmlFor="text-content" className="block text-xs font-semibold text-text-main">Text Content</label>
     <textarea
+      id="text-content"
       rows={4}
       value={config.textData.text}
       onChange={(e) => onChange({ textData: { text: e.target.value } })}
@@ -22,8 +23,9 @@ export const TextForm: React.FC<FormProps> = ({ config, onChange }) => (
 export const EmailForm: React.FC<FormProps> = ({ config, onChange }) => (
   <div className="space-y-3">
     <div>
-      <label className="text-xs font-semibold text-text-main">Recipient Email</label>
+      <label htmlFor="email-recipient" className="text-xs font-semibold text-text-main">Recipient Email</label>
       <input
+        id="email-recipient"
         type="email"
         value={config.emailData.email}
         onChange={(e) => onChange({ emailData: { ...config.emailData, email: e.target.value } })}
@@ -32,8 +34,9 @@ export const EmailForm: React.FC<FormProps> = ({ config, onChange }) => (
       />
     </div>
     <div>
-      <label className="text-xs font-semibold text-text-main">Subject</label>
+      <label htmlFor="email-subject" className="text-xs font-semibold text-text-main">Subject</label>
       <input
+        id="email-subject"
         type="text"
         value={config.emailData.subject}
         onChange={(e) => onChange({ emailData: { ...config.emailData, subject: e.target.value } })}
@@ -42,8 +45,9 @@ export const EmailForm: React.FC<FormProps> = ({ config, onChange }) => (
       />
     </div>
     <div>
-      <label className="text-xs font-semibold text-text-main">Body</label>
+      <label htmlFor="email-body" className="text-xs font-semibold text-text-main">Body</label>
       <textarea
+        id="email-body"
         rows={3}
         value={config.emailData.body}
         onChange={(e) => onChange({ emailData: { ...config.emailData, body: e.target.value } })}
@@ -56,8 +60,9 @@ export const EmailForm: React.FC<FormProps> = ({ config, onChange }) => (
 
 export const PhoneForm: React.FC<FormProps> = ({ config, onChange }) => (
   <div className="space-y-3">
-    <label className="block text-xs font-semibold text-text-main">Phone Number</label>
+    <label htmlFor="phone-number" className="block text-xs font-semibold text-text-main">Phone Number</label>
     <input
+      id="phone-number"
       type="tel"
       value={config.phoneData.phone}
       onChange={(e) => onChange({ phoneData: { phone: e.target.value } })}
@@ -71,8 +76,9 @@ export const PhoneForm: React.FC<FormProps> = ({ config, onChange }) => (
 export const SMSForm: React.FC<FormProps> = ({ config, onChange }) => (
   <div className="space-y-3">
     <div>
-      <label className="text-xs font-semibold text-text-main">Target Phone</label>
+      <label htmlFor="sms-target-phone" className="text-xs font-semibold text-text-main">Target Phone</label>
       <input
+        id="sms-target-phone"
         type="tel"
         value={config.smsData.phone}
         onChange={(e) => onChange({ smsData: { ...config.smsData, phone: e.target.value } })}
@@ -81,8 +87,9 @@ export const SMSForm: React.FC<FormProps> = ({ config, onChange }) => (
       />
     </div>
     <div>
-      <label className="text-xs font-semibold text-text-main">Pre-filled SMS Text</label>
+      <label htmlFor="sms-message" className="text-xs font-semibold text-text-main">Pre-filled SMS Text</label>
       <textarea
+        id="sms-message"
         rows={3}
         value={config.smsData.message}
         onChange={(e) => onChange({ smsData: { ...config.smsData, message: e.target.value } })}

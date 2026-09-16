@@ -51,7 +51,7 @@ export const QRExportDialog: React.FC<Props> = ({ isOpen, onClose, config }) => 
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/70 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/70 backdrop-blur-xs animate-fade-in">
       <div className="neu-card rounded-major max-w-md w-full p-6 space-y-4 border border-border">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -66,7 +66,7 @@ export const QRExportDialog: React.FC<Props> = ({ isOpen, onClose, config }) => 
         </div>
 
         <div className="space-y-1.5">
-          <label className="text-xs font-semibold text-text-main block">Format</label>
+          <span className="text-xs font-semibold text-text-main block">Format</span>
           <div className="grid grid-cols-3 gap-2">
             {[
               { id: 'png', label: 'PNG Image', desc: 'Raster' },
@@ -78,11 +78,11 @@ export const QRExportDialog: React.FC<Props> = ({ isOpen, onClose, config }) => 
                 type="button"
                 onClick={() => setFormat(f.id as any)}
                 className={`p-2.5 rounded-control text-left transition-all ${
-                  format === f.id ? 'bg-primary text-white shadow-glow-indigo font-semibold' : 'neu-button text-text-main'
+                  format === f.id ? 'bg-primary text-on-primary shadow-glow-emerald font-semibold' : 'neu-button text-text-main'
                 }`}
               >
                 <div className="text-xs font-bold">{f.label}</div>
-                <div className={`text-[10px] ${format === f.id ? 'text-white/80' : 'text-text-muted'}`}>{f.desc}</div>
+                <div className={`text-[10px] ${format === f.id ? 'text-on-primary/80' : 'text-text-muted'}`}>{f.desc}</div>
               </button>
             ))}
           </div>
@@ -90,7 +90,7 @@ export const QRExportDialog: React.FC<Props> = ({ isOpen, onClose, config }) => 
 
         {format === 'png' && (
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-text-main block">Resolution</label>
+            <span className="text-xs font-semibold text-text-main block">Resolution</span>
             <div className="grid grid-cols-4 gap-2">
               {[512, 1024, 2048, 4096].map((sz) => (
                 <button
@@ -98,7 +98,7 @@ export const QRExportDialog: React.FC<Props> = ({ isOpen, onClose, config }) => 
                   type="button"
                   onClick={() => setResolution(sz)}
                   className={`p-2 rounded-control text-center text-xs font-medium transition-all ${
-                    resolution === sz ? 'bg-primary text-white shadow-sm font-semibold' : 'neu-button text-text-muted'
+                    resolution === sz ? 'bg-primary text-on-primary shadow-xs font-semibold' : 'neu-button text-text-muted'
                   }`}
                 >
                   {sz}px
@@ -109,14 +109,15 @@ export const QRExportDialog: React.FC<Props> = ({ isOpen, onClose, config }) => 
         )}
 
         {format === 'svg' && config.frameType !== 'none' && (
-          <p className="rounded-control border border-cyan-accent/25 bg-cyan-accent/10 px-3 py-2 text-[11px] leading-relaxed text-text-main">
+          <p className="rounded-control border border-blue-accent/30 bg-blue-accent/10 px-3 py-2 text-[11px] leading-relaxed text-text-main">
             SVG preserves the QR code as a vector. Frame artwork and CTA text are included in PNG and PDF exports.
           </p>
         )}
 
         <div className="space-y-1">
-          <label className="text-xs font-semibold text-text-main block">File Name</label>
+          <label htmlFor="export-file-name" className="text-xs font-semibold text-text-main block">File Name</label>
           <input
+            id="export-file-name"
             type="text"
             value={fileName}
             onChange={(e) => setFileName(e.target.value)}
@@ -133,7 +134,7 @@ export const QRExportDialog: React.FC<Props> = ({ isOpen, onClose, config }) => 
             type="button"
             disabled={isExporting}
             onClick={handleDownload}
-            className="flex items-center gap-1.5 rounded-control bg-primary px-4 py-2 text-xs font-semibold text-white shadow-glow-indigo disabled:opacity-50"
+            className="flex items-center gap-1.5 rounded-control bg-primary px-4 py-2 text-xs font-semibold text-on-primary shadow-glow-emerald disabled:opacity-50"
           >
             {isExporting ? <Icon icon="solar:refresh-outline" className="h-4 w-4 animate-spin" /> : <Icon icon="solar:download-minimalistic-outline" className="h-4 w-4" />}
             <span>Download {format.toUpperCase()}</span>

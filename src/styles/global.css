@@ -1,55 +1,133 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-text-main: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-on-primary: var(--on-primary);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-blue-accent: var(--accent-blue);
+  --color-blue-strong: var(--accent-blue-strong);
+  --color-yellow-accent: var(--accent-yellow);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-focus: var(--focus);
+  --color-border: var(--border);
+
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-sans: Inter, system-ui, sans-serif;
+
+  --radius-major: 24px;
+  --radius-card: 16px;
+  --radius-control: 12px;
+
+  --shadow-neu-flat: var(--neu-flat);
+  --shadow-neu-pressed: var(--neu-pressed);
+  --shadow-neu-hover: var(--neu-hover);
+  --shadow-neu-sm: var(--neu-sm);
+  --shadow-glow-emerald: 0 0 25px -6px var(--primary);
+  --shadow-glow-blue: 0 0 25px -6px var(--accent-blue);
+
+  --animate-fade-in: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
 
 :root {
-  --bg-color: #E9EEF6;
-  --surface-color: #EFF3F9;
-  --surface-elevated: #F7F9FD;
-  --text-main: #172033;
-  --text-muted: #667085;
-  --primary-indigo: #5B5CEB;
-  --primary-hover: #4D4EE2;
-  --cyan-accent: #22C8F6;
-  --green-accent: #35C98A;
-  --pink-accent: #F06EAE;
-  --border-color: rgba(163, 177, 198, 0.28);
+  --bg: #F4F7F8;
+  --surface: #FFFFFF;
+  --surface-elevated: #FAFCFC;
+  --text: #172126;
+  --text-muted: #66777E;
+  --border: #DCE5E7;
 
-  --neu-flat: 10px 10px 24px rgba(163, 177, 198, 0.48), -10px -10px 24px rgba(255, 255, 255, 0.85);
-  --neu-sm: 5px 5px 12px rgba(163, 177, 198, 0.40), -5px -5px 12px rgba(255, 255, 255, 0.85);
-  --neu-hover: 12px 12px 28px rgba(163, 177, 198, 0.55), -12px -12px 28px rgba(255, 255, 255, 0.95);
-  --neu-pressed: inset 4px 4px 8px rgba(163, 177, 198, 0.45), inset -4px -4px 8px rgba(255, 255, 255, 0.85);
+  --primary: #10B981;
+  --primary-hover: #059669;
+  --accent-blue: #38BDF8;
+  --accent-blue-strong: #0284C7;
 
-  --ambient-indigo: rgba(91, 92, 235, 0.08);
-  --ambient-cyan: rgba(34, 200, 246, 0.07);
-  --ambient-pink: rgba(240, 110, 174, 0.06);
-  --ambient-green: rgba(53, 201, 138, 0.06);
+  --accent-yellow: #FACC15;
+
+  --shadow-dark: rgba(163, 177, 188, 0.30);
+  --shadow-light: rgba(255, 255, 255, 0.92);
+
+  --on-primary: #FFFFFF;
+  --success: #22C55E;
+  --warning: #EAB308;
+  --error: #EF4444;
+  --focus: #10B981;
+
+  /* Legacy aliases (kept for compatibility, mapped to fresh tokens) */
+  --bg-color: var(--bg);
+  --surface-color: var(--surface);
+  --text-main: var(--text);
+  --border-color: var(--border);
+
+  --neu-flat: 12px 12px 28px var(--shadow-dark), -12px -12px 28px var(--shadow-light);
+  --neu-sm: 5px 5px 12px var(--shadow-dark), -5px -5px 12px var(--shadow-light);
+  --neu-hover: 14px 14px 32px var(--shadow-dark), -14px -14px 32px var(--shadow-light);
+  --neu-pressed: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+
+  --ambient-emerald: rgba(16, 185, 129, 0.07);
+  --ambient-blue: rgba(56, 189, 248, 0.07);
+
+
 }
 
 .dark {
-  --bg-color: #101522;
-  --surface-color: #181F30;
-  --surface-elevated: #20293C;
-  --text-main: #EDF2FF;
-  --text-muted: #A7B0C5;
-  --primary-indigo: #9691FF;
-  --primary-hover: #AAA6FF;
-  --cyan-accent: #53D8FF;
-  --green-accent: #4FE3A7;
-  --pink-accent: #FF8FC2;
-  --border-color: rgba(255, 255, 255, 0.08);
+  --bg: #11161A;
+  --surface: #192126;
+  --surface-elevated: #222D33;
+  --text: #EDF7F5;
+  --text-muted: #9AAAB0;
+  --border: #314047;
 
-  --neu-flat: 10px 10px 24px rgba(5, 8, 14, 0.70), -10px -10px 24px rgba(48, 60, 88, 0.38);
-  --neu-sm: 5px 5px 12px rgba(5, 8, 14, 0.65), -5px -5px 12px rgba(48, 60, 88, 0.35);
-  --neu-hover: 12px 12px 28px rgba(5, 8, 14, 0.80), -12px -12px 28px rgba(48, 60, 88, 0.45);
-  --neu-pressed: inset 4px 4px 8px rgba(5, 8, 14, 0.70), inset -4px -4px 8px rgba(48, 60, 88, 0.38);
+  --primary: #34D399;
+  --primary-hover: #6EE7B7;
+  --accent-blue: #5DD8FF;
+  --accent-blue-strong: #38BDF8;
 
-  --ambient-indigo: rgba(150, 145, 255, 0.12);
-  --ambient-cyan: rgba(83, 216, 255, 0.10);
-  --ambient-pink: rgba(255, 143, 194, 0.08);
-  --ambient-green: rgba(79, 227, 167, 0.08);
+  --accent-yellow: #FDE047;
+
+  --shadow-dark: rgba(0, 0, 0, 0.56);
+  --shadow-light: rgba(68, 87, 96, 0.24);
+
+  --on-primary: #06281C;
+  --success: #4ADE80;
+  --warning: #FACC15;
+  --error: #FB7185;
+  --focus: #34D399;
+
+  /* Legacy aliases (kept for compatibility, mapped to fresh tokens) */
+  --bg-color: var(--bg);
+  --surface-color: var(--surface);
+  --text-main: var(--text);
+  --border-color: var(--border);
+
+  --neu-flat: 12px 12px 28px var(--shadow-dark), -12px -12px 28px var(--shadow-light);
+  --neu-sm: 5px 5px 12px var(--shadow-dark), -5px -5px 12px var(--shadow-light);
+  --neu-hover: 14px 14px 32px var(--shadow-dark), -14px -14px 32px var(--shadow-light);
+  --neu-pressed: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+
+  --ambient-emerald: rgba(16, 185, 129, 0.10);
+  --ambient-blue: rgba(56, 189, 248, 0.10);
+
+
 }
 
 * {
@@ -60,56 +138,79 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-main);
+  background-color: var(--bg);
+  color: var(--text);
   min-height: 100vh;
   overflow-x: hidden;
   transition: background-color 0.25s ease, color 0.25s ease;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Neumorphic Utilities */
-.neu-card {
-  background-color: var(--surface-color);
-  box-shadow: var(--neu-flat);
-  border: 1px solid var(--border-color);
+@layer base {
+  /* Fresh Signal focus ring — emerald only, used for all keyboard focus */
+  :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  /* v4 preflight mengubah cursor tombol jadi `default` */
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  /* v4 memakai currentColor @50% untuk placeholder; kunci ke v3 gray-400 */
+  input::placeholder,
+  textarea::placeholder {
+    color: #9ca3af;
+  }
 }
 
-.neu-elevated {
-  background-color: var(--surface-elevated);
-  box-shadow: var(--neu-flat);
-  border: 1px solid var(--border-color);
-}
+@layer components {
+  /* Neumorphic Utilities — subtle fresh neutral surfaces. Inset only for inputs / pressed / selected. */
+  .neu-card {
+    background-color: var(--surface);
+    box-shadow: var(--neu-flat);
+    border: 1px solid var(--border);
+  }
 
-.neu-button {
-  background-color: var(--surface-color);
-  box-shadow: var(--neu-sm);
-  border: 1px solid var(--border-color);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
+  .neu-elevated {
+    background-color: var(--surface-elevated);
+    box-shadow: var(--neu-flat);
+    border: 1px solid var(--border);
+  }
 
-.neu-button:hover {
-  box-shadow: var(--neu-hover);
-  transform: translateY(-2px);
-}
+  .neu-button {
+    background-color: var(--surface);
+    box-shadow: var(--neu-sm);
+    border: 1px solid var(--border);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
 
-.neu-button:active, .neu-button.active {
-  box-shadow: var(--neu-pressed);
-  transform: translateY(0);
-}
+  .neu-button:hover {
+    box-shadow: var(--neu-hover);
+    transform: translateY(-2px);
+  }
 
-.neu-input {
-  background-color: var(--surface-color);
-  box-shadow: var(--neu-pressed);
-  border: 1px solid var(--border-color);
-  color: var(--text-main);
-  transition: all 0.2s ease;
-}
+  .neu-button:active, .neu-button.active {
+    box-shadow: var(--neu-pressed);
+    transform: translateY(0);
+  }
 
-.neu-input:focus {
-  outline: none;
-  border-color: var(--primary-indigo);
-  box-shadow: var(--neu-pressed), 0 0 0 1px var(--primary-indigo);
+  .neu-input {
+    background-color: var(--surface);
+    box-shadow: var(--neu-pressed);
+    border: 1px solid var(--border);
+    color: var(--text);
+    transition: all 0.2s ease;
+  }
+
+  .neu-input:focus {
+    outline: none;
+    border-color: var(--focus);
+    box-shadow: var(--neu-pressed), 0 0 0 2px color-mix(in srgb, var(--focus) 38%, transparent);
+  }
 }
 
 /* Custom Scrollbar */
@@ -119,14 +220,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-color);
+  background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-color);
+  background: var(--border);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
 }
+
+/* Fresh Signal semantic accents (emerald + blue primary, yellow highlight-only) */

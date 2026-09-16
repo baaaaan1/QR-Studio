@@ -26,7 +26,7 @@ export const PatternSelector: React.FC<Props> = ({ config, onChange }) => {
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       {/* Dot Shape */}
       <div className="space-y-2">
-        <label className="text-xs font-semibold text-text-main">Dot Pattern</label>
+        <span className="text-xs font-semibold text-text-main">Dot Pattern</span>
         <div className="grid grid-cols-3 gap-1.5">
           {DOT_PATTERNS.map((p) => {
             const active = config.dotType === p.id;
@@ -37,7 +37,7 @@ export const PatternSelector: React.FC<Props> = ({ config, onChange }) => {
                 onClick={() => onChange({ dotType: p.id })}
                 className={`rounded-control px-2.5 py-2 text-xs font-medium transition-all ${
                   active
-                    ? 'bg-primary text-white shadow-glow-indigo font-semibold'
+                    ? 'bg-primary text-on-primary shadow-glow-emerald font-semibold'
                     : 'neu-button text-text-muted hover:text-text-main'
                 }`}
               >
@@ -50,7 +50,7 @@ export const PatternSelector: React.FC<Props> = ({ config, onChange }) => {
 
       {/* Corner Shape */}
       <div className="space-y-2">
-        <label className="text-xs font-semibold text-text-main">Corner Markers</label>
+        <span className="text-xs font-semibold text-text-main">Corner Markers</span>
         <div className="grid grid-cols-3 gap-1.5">
           {CORNER_PATTERNS.map((c) => {
             const active = config.cornerSquareType === c.id;
@@ -66,7 +66,7 @@ export const PatternSelector: React.FC<Props> = ({ config, onChange }) => {
                 }
                 className={`rounded-control px-2.5 py-2 text-xs font-medium transition-all ${
                   active
-                    ? 'bg-primary text-white shadow-glow-indigo font-semibold'
+                    ? 'bg-primary text-on-primary shadow-glow-emerald font-semibold'
                     : 'neu-button text-text-muted hover:text-text-main'
                 }`}
               >

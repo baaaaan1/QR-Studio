@@ -1,0 +1,4 @@
+# Copy this file to the repository root to use the Heroku or Paketo buildpack build type.
+# The command serves the prebuilt dist/ with Astro's preview server (port 4321).
+# In Dokploy, set the Domain target port to 4321.
+web: npm run preview:host

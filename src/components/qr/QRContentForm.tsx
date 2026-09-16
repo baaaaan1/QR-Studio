@@ -39,7 +39,7 @@ export const QRContentForm: React.FC<QRContentFormProps> = ({ config, onChange }
               onClick={() => onChange({ type: t.id })}
               className={`flex flex-col items-center justify-center gap-1.5 rounded-control px-2 py-2.5 text-xs font-semibold transition-all ${
                 isActive
-                  ? 'bg-primary text-white shadow-glow-indigo'
+                  ? 'bg-primary text-on-primary shadow-glow-emerald'
                   : 'neu-button text-text-muted hover:text-text-main'
               }`}
               aria-label={`Select ${t.label} QR type`}

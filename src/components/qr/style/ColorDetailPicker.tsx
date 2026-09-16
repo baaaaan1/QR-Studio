@@ -41,7 +41,7 @@ export const ColorDetailPicker: React.FC<Props> = ({ config, onChange }) => {
             type="button"
             onClick={() => onChange({ useGradient: false })}
             className={`px-3 py-1 text-xs rounded-lg font-medium transition-all ${
-              !config.useGradient ? 'bg-primary text-white shadow-sm' : 'text-text-muted hover:text-text-main'
+              !config.useGradient ? 'bg-primary text-on-primary shadow-xs' : 'text-text-muted hover:text-text-main'
             }`}
           >
             Solid
@@ -50,7 +50,7 @@ export const ColorDetailPicker: React.FC<Props> = ({ config, onChange }) => {
             type="button"
             onClick={() => onChange({ useGradient: true })}
             className={`px-3 py-1 text-xs rounded-lg font-medium transition-all ${
-              config.useGradient ? 'bg-primary text-white shadow-sm' : 'text-text-muted hover:text-text-main'
+              config.useGradient ? 'bg-primary text-on-primary shadow-xs' : 'text-text-muted hover:text-text-main'
             }`}
           >
             Gradient
@@ -84,7 +84,7 @@ export const ColorDetailPicker: React.FC<Props> = ({ config, onChange }) => {
                   onClick={() => updateGradient({ ...config.gradient, type })}
                   className={`rounded-control px-3 py-2 text-xs font-semibold capitalize transition-all ${
                     config.gradient.type === type
-                      ? 'bg-primary text-white shadow-sm'
+                      ? 'bg-primary text-on-primary shadow-xs'
                       : 'neu-button text-text-muted hover:text-text-main'
                   }`}
                 >
@@ -106,7 +106,7 @@ export const ColorDetailPicker: React.FC<Props> = ({ config, onChange }) => {
                   className="group rounded-control p-2 text-left neu-button transition-all hover:border-primary/50"
                 >
                   <span
-                    className="mb-1.5 block h-7 w-full rounded-md border border-border shadow-inner"
+                    className="mb-1.5 block h-7 w-full rounded-md border border-border inset-shadow-sm"
                     style={{ background: gradientCss(preset.gradient) }}
                   />
                   <span className="block truncate text-center text-[10px] font-medium text-text-muted group-hover:text-text-main">
@@ -118,8 +118,8 @@ export const ColorDetailPicker: React.FC<Props> = ({ config, onChange }) => {
           </div>
 
           <div className="grid grid-cols-2 gap-3">
-            <ColorInput label="Start Color" value={config.gradient.colorStops[0]?.color || '#5B5CEB'} onChange={(color) => updateStop(0, color)} />
-            <ColorInput label="End Color" value={config.gradient.colorStops.at(-1)?.color || '#22C8F6'} onChange={(color) => updateStop(config.gradient.colorStops.length - 1, color)} />
+            <ColorInput label="Start Color" value={config.gradient.colorStops[0]?.color || '#10B981'} onChange={(color) => updateStop(0, color)} />
+            <ColorInput label="End Color" value={config.gradient.colorStops.at(-1)?.color || '#38BDF8'} onChange={(color) => updateStop(config.gradient.colorStops.length - 1, color)} />
           </div>
 
           {config.gradient.type === 'linear' && (
@@ -136,7 +136,7 @@ export const ColorDetailPicker: React.FC<Props> = ({ config, onChange }) => {
                     onClick={() => updateGradient({ ...config.gradient, rotation: angle })}
                     className={`rounded-control py-1.5 text-xs font-semibold transition-all ${
                       config.gradient.rotation === angle
-                        ? 'bg-primary text-white shadow-sm'
+                        ? 'bg-primary text-on-primary shadow-xs'
                         : 'neu-button text-text-muted hover:text-text-main'
                     }`}
                   >
@@ -161,10 +161,11 @@ export const ColorDetailPicker: React.FC<Props> = ({ config, onChange }) => {
 
       <div className="pt-3 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <label className="text-xs font-medium text-text-main">QR Background:</label>
+          <label htmlFor="qr-bg-color" className="text-xs font-medium text-text-main">QR Background:</label>
           {!config.transparentBg && (
             <div className="flex items-center gap-1.5">
               <input
+                id="qr-bg-color"
                 type="color"
                 value={config.bgColor}
                 onChange={(event) => onChange({ bgColor: event.target.value })}

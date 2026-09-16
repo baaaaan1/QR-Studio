@@ -4,15 +4,15 @@
   "type": "module",
   "description": "QR Studio - Professional Soft Neon Neumorphic QR Code Suite",
   "license": "MIT",
+  "engines": { "node": ">=22.12.0" },
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "preview:host": "astro preview --host"
   },
   "dependencies": {
     "@astrojs/react": "^6.0.5",
-    "@astrojs/tailwind": "^6.0.2",
     "@iconify/react": "^6.0.2",
     "astro": "^7.3.2",
     "clsx": "^2.1.1",
@@ -21,13 +21,15 @@
     "qr-code-styling": "^1.9.2",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
-    "tailwind-merge": "^3.7.0",
-    "tailwindcss": "^3.4.19"
+    "tailwind-merge": "^3.7.0"
   },
   "devDependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^26.5.1",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2"
   }
 }

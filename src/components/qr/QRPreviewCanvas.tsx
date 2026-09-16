@@ -66,7 +66,7 @@ export const QRPreviewCanvas: React.FC<Props> = ({ config, onOpenExport, onQuick
       <div className="neu-card rounded-major p-6 sm:p-8 flex flex-col items-center justify-center max-w-full relative overflow-hidden transition-all">
         {/* Soft corner badge */}
         <div className="absolute top-3.5 left-4 flex items-center gap-1.5">
-          <span className="h-2 w-2 rounded-full bg-green-accent animate-pulse" />
+          <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
           <span className="text-[10px] font-semibold text-text-muted uppercase tracking-wider">
             Live Preview
           </span>
@@ -103,7 +103,7 @@ export const QRPreviewCanvas: React.FC<Props> = ({ config, onOpenExport, onQuick
         <button
           type="button"
           onClick={onOpenExport}
-          className="flex-1 flex items-center justify-center gap-2 rounded-control bg-primary text-white px-5 py-3 text-sm font-semibold shadow-glow-indigo hover:opacity-95 active:scale-[0.98] transition-all"
+          className="flex-1 flex items-center justify-center gap-2 rounded-control bg-primary text-on-primary px-5 py-3 text-sm font-semibold shadow-glow-emerald hover:opacity-95 active:scale-[0.98] transition-all"
         >
           <Icon icon="solar:download-minimalistic-outline" className="h-5 w-5" />
           <span>Export (PNG, SVG, PDF)</span>
@@ -117,7 +117,7 @@ export const QRPreviewCanvas: React.FC<Props> = ({ config, onOpenExport, onQuick
         >
           <Icon
             icon={copied ? 'solar:check-circle-outline' : 'solar:copy-outline'}
-            className={`h-4 w-4 ${copied ? 'text-green-accent' : 'text-text-muted'}`}
+            className={`h-4 w-4 ${copied ? 'text-primary' : 'text-text-muted'}`}
           />
           <span>{copied ? 'Copied!' : 'Copy Image'}</span>
         </button>

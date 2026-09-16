@@ -53,7 +53,7 @@ export const QRLogoManager: React.FC<Props> = ({ config, onChange }) => {
   return (
     <div className="space-y-5">
       <div className="rounded-card neu-card p-4 space-y-4">
-        <label className="text-xs font-semibold text-text-main block">Logo / Image</label>
+        <span className="text-xs font-semibold text-text-main block">Logo / Image</span>
         <div className="flex flex-col sm:flex-row items-center gap-3">
           <input ref={fileRef} type="file" accept="image/*" onChange={handleUpload} className="hidden" id="logo-input" />
           <label htmlFor="logo-input" className="neu-button flex flex-1 w-full items-center justify-center gap-2 rounded-control px-4 py-3 text-xs font-medium cursor-pointer">
@@ -61,7 +61,7 @@ export const QRLogoManager: React.FC<Props> = ({ config, onChange }) => {
             <span>Select Image File</span>
           </label>
           {config.logoUrl && (
-            <button type="button" onClick={clearLogo} className="neu-button flex items-center gap-1 rounded-control px-3 py-3 text-xs font-medium text-pink-accent">
+            <button type="button" onClick={clearLogo} className="neu-button flex items-center gap-1 rounded-control px-3 py-3 text-xs font-medium text-error">
               <Icon icon="solar:trash-bin-trash-outline" className="h-4 w-4" />
               <span>Remove</span>
             </button>
@@ -71,7 +71,7 @@ export const QRLogoManager: React.FC<Props> = ({ config, onChange }) => {
         {config.logoUrl && (
           <div className="pt-2 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-lg border border-border bg-white flex items-center justify-center p-1 shadow-inner overflow-hidden">
+              <div className="h-10 w-10 rounded-lg border border-border bg-white flex items-center justify-center p-1 inset-shadow-sm overflow-hidden">
                 <img src={config.logoUrl} alt="Active logo" className="max-h-full max-w-full object-contain" />
               </div>
               <div className="text-xs">
@@ -81,7 +81,7 @@ export const QRLogoManager: React.FC<Props> = ({ config, onChange }) => {
             </div>
             <label className="flex items-center gap-2 text-xs font-medium cursor-pointer bg-surface px-3 py-2 rounded-control border border-border">
               <input type="checkbox" disabled={isRemovingBg} checked={config.removeLogoBgApplied} onChange={(e) => handleRemoveBg(e.target.checked)} className="rounded accent-primary h-4 w-4" />
-              <Icon icon="solar:eraser-outline" className="h-4 w-4 text-cyan-accent" />
+              <Icon icon="solar:eraser-outline" className="h-4 w-4 text-error" />
               <span>{isRemovingBg ? 'Removing...' : 'Auto-Remove White BG'}</span>
             </label>
           </div>

@@ -28,9 +28,9 @@ export const QRFrameSelector: React.FC<Props> = ({ config, onChange }) => {
   return (
     <div className="space-y-5">
       <div className="space-y-2.5">
-        <label className="text-xs font-semibold text-text-main block">
+        <span className="text-xs font-semibold text-text-main block">
           Select Frame Template
-        </label>
+        </span>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
           {FRAMES.map((f) => {
             const active = config.frameType === f.id;
@@ -41,7 +41,7 @@ export const QRFrameSelector: React.FC<Props> = ({ config, onChange }) => {
                 onClick={() => onChange({ frameType: f.id })}
                 className={`flex flex-col items-center justify-center gap-2 p-3 rounded-control text-xs font-medium transition-all ${
                   active
-                    ? 'bg-primary text-white shadow-glow-indigo font-semibold'
+                    ? 'bg-primary text-on-primary shadow-glow-emerald font-semibold'
                     : 'neu-button text-text-muted hover:text-text-main'
                 }`}
               >
@@ -57,9 +57,9 @@ export const QRFrameSelector: React.FC<Props> = ({ config, onChange }) => {
         <div className="rounded-card neu-card p-4 space-y-4">
           {/* CTA Text Position */}
           <div>
-            <label className="text-xs font-semibold text-text-main block mb-2">
+            <span className="text-xs font-semibold text-text-main block mb-2">
               CTA Text Position
-            </label>
+            </span>
             <p className="mb-2 text-[11px] text-text-muted">
               Place an optional call-to-action above the QR, below it, or in both positions.
             </p>
@@ -71,7 +71,7 @@ export const QRFrameSelector: React.FC<Props> = ({ config, onChange }) => {
                   onClick={() => onChange({ frameTextPosition: pos.id })}
                   className={`flex-1 py-2 text-xs font-semibold rounded-control transition-all ${
                     config.frameTextPosition === pos.id
-                      ? 'bg-primary text-white shadow-sm'
+                      ? 'bg-primary text-on-primary shadow-xs'
                       : 'neu-button text-text-muted hover:text-text-main'
                   }`}
                 >
@@ -84,10 +84,11 @@ export const QRFrameSelector: React.FC<Props> = ({ config, onChange }) => {
           {/* Top CTA Text */}
           {(config.frameTextPosition === 'top' || config.frameTextPosition === 'both') && (
             <div>
-              <label className="text-xs font-semibold text-text-main block mb-1">
+              <label htmlFor="frame-top-text" className="text-xs font-semibold text-text-main block mb-1">
                 Top CTA Text
               </label>
               <input
+                id="frame-top-text"
                 type="text"
                 value={config.frameTopText}
                 onChange={(e) => onChange({ frameTopText: e.target.value })}
@@ -101,10 +102,11 @@ export const QRFrameSelector: React.FC<Props> = ({ config, onChange }) => {
                     {/* Bottom CTA Text */}
           {(config.frameTextPosition === 'bottom' || config.frameTextPosition === 'both') && (
             <div>
-              <label className="text-xs font-semibold text-text-main block mb-1">
+              <label htmlFor="frame-bottom-text" className="text-xs font-semibold text-text-main block mb-1">
                 Bottom CTA Text
               </label>
               <input
+                id="frame-bottom-text"
                 type="text"
                 value={config.frameText}
                 onChange={(e) => onChange({ frameText: e.target.value })}

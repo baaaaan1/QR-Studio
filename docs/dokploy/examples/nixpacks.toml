@@ -1,0 +1,10 @@
+[phases.setup]
+nixPkgs = ["nodejs_22"]
+
+[phases.install]
+dependsOn = ["setup"]
+cmds = ["npm ci"]
+
+[phases.build]
+dependsOn = ["install"]
+cmds = ["npm run build"]

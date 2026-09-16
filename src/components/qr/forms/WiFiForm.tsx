@@ -10,8 +10,9 @@ export const WiFiForm: React.FC<FormProps> = ({ config, onChange }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <div className="space-y-1.5 sm:col-span-2">
-        <label className="text-xs font-semibold text-text-main">Network SSID (Name)</label>
+        <label htmlFor="wifi-ssid" className="text-xs font-semibold text-text-main">Network SSID (Name)</label>
         <input
+          id="wifi-ssid"
           type="text"
           value={config.wifiData.ssid}
           onChange={(e) =>
@@ -25,8 +26,9 @@ export const WiFiForm: React.FC<FormProps> = ({ config, onChange }) => {
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-xs font-semibold text-text-main">Password</label>
+        <label htmlFor="wifi-password" className="text-xs font-semibold text-text-main">Password</label>
         <input
+          id="wifi-password"
           type="text"
           value={config.wifiData.password}
           onChange={(e) =>
@@ -40,8 +42,9 @@ export const WiFiForm: React.FC<FormProps> = ({ config, onChange }) => {
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-xs font-semibold text-text-main">Encryption</label>
+        <label htmlFor="wifi-encryption" className="text-xs font-semibold text-text-main">Encryption</label>
         <select
+          id="wifi-encryption"
           value={config.wifiData.encryption}
           onChange={(e) =>
             onChange({

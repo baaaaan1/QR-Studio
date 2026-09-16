@@ -159,7 +159,7 @@ export const QRStudio: React.FC = () => {
           <button
             type="button"
             onClick={() => setIsDecoderOpen(true)}
-            className="neu-button flex items-center gap-1.5 rounded-control px-3.5 py-2 text-xs font-semibold text-cyan-accent hover:opacity-90 active:scale-[0.98] transition-all"
+            className="neu-button flex items-center gap-1.5 rounded-control px-3.5 py-2 text-xs font-semibold text-primary hover:opacity-90 active:scale-[0.98] transition-all"
             title="Decode / Scan QR from image or camera"
             aria-label="Open QR decoder"
           >
@@ -191,7 +191,7 @@ export const QRStudio: React.FC = () => {
                   onClick={() => setActiveTab(t.id)}
                   className={`flex min-w-0 items-center justify-center gap-2 px-2.5 py-2.5 rounded-control text-xs font-semibold transition-all sm:px-3 ${
                     active
-                      ? 'bg-primary text-white shadow-glow-indigo font-bold'
+                      ? 'bg-primary text-on-primary shadow-glow-emerald font-bold'
                       : 'text-text-muted hover:text-text-main hover:bg-surface-elevated'
                   }`}
                 >
