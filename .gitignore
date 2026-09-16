@@ -29,6 +29,10 @@ local-test-qr/
 .vercel/
 .netlify/
 
+# Agent / local tooling (keep local only)
+.kilo/
+task.md
+
 # OS / Editor
 .DS_Store
 Thumbs.db
