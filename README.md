@@ -16,6 +16,7 @@ Create a QR code that suits your needs, complete with a call-to-action (CTA) fra
 - [Available Scripts](#available-scripts)
 - [Limitations](#limitations)
 - [Deployment](#deployment)
+- [Changelog](#changelog)
 - [License](#license)
 
 ## Features
@@ -185,6 +186,10 @@ The repo ships a production container path: the root [`Dockerfile`](./Dockerfile
 - Full guide: [Dokploy build types (English)](./docs/dokploy/README.md) · [Bahasa Indonesia](./docs/dokploy/README-ID.md)
 - Recommended build type: **Dockerfile**; alternative configs live in [`docs/dokploy/examples/`](./docs/dokploy/examples).
 - Before going live, replace the placeholder `site` in `astro.config.mjs` and the sitemap URL in `public/robots.txt` with the real domain.
+
+## Changelog
+
+Release history lives in [CHANGELOG.md](./CHANGELOG.md), following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## License
 
